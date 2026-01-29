@@ -9,7 +9,8 @@ pipeline {
     stages{
       stage('git clone') {
           steps {
-                checkout scmGit(git branch: 'main', credentialsId: 'jenkins-github-ssh-key', url: 'git@github.com:gayathrimallisetti118-sys/learn-terraform-provision-eks-cluster.git')
+                git branch: 'main',
+                url: 'https://github.com/gayathrimallisetti118-sys/learn-terraform-provision-eks-cluster.git'
             }
          }
          stage('Terraform Init') { 
@@ -45,4 +46,5 @@ pipeline {
         }
     }
  }
+
 
