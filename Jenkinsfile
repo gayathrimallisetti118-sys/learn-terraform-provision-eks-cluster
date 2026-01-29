@@ -15,7 +15,7 @@ pipeline {
          }
          stage('Terraform Init') { 
              when {
-                expression { TF_INIT == 'true' }
+                expression { TF_INIT }
         }
             steps {
                 sh 'terraform init'
@@ -23,7 +23,7 @@ pipeline {
          }
          stage('Terraform Validate') {
              when {
-                expression { TF_VALIDATE == 'true' }
+                expression { TF_VALIDATE  }
         }
             steps {
                 sh 'terraform validate'
@@ -31,7 +31,7 @@ pipeline {
          }
         stage('Terraform Plan') { 
             when {
-                expression { TF_PLAN == 'true' }
+                expression { TF_PLAN  }
         }
             steps {
                sh 'terraform plan'
@@ -39,7 +39,7 @@ pipeline {
         } 
         stage('Terraform Apply'){
          when {
-                expression { TF_APPLY == 'false' }
+                expression { TF_APPLY }
         }
         steps{
           sh 'terraform apply -auto-approve'
@@ -47,6 +47,7 @@ pipeline {
     }
  }
 }
+
 
 
 
